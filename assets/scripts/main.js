@@ -58,6 +58,7 @@ function saveRecipesToStorage(recipes) {
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
+  localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
 /**
@@ -67,10 +68,36 @@ function saveRecipesToStorage(recipes) {
 function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
-  
+  let formEl = document.querySelector("form");
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
+  // let submitEl = document.querySelectorAll("button[type=submit]")[0];
+  let submitEl = document.querySelector("button");
 
+  console.log(submitEl);
+
+  let submitForm = (event) => {
+    console.log("Ran listener");
+    // console.log(formEl);
+    let formEl = document.querySelector("form");
+    const formData = new FormData(formEl);
+    
+    // formData.append();
+    // formData.append()
+    // formData.append("imgSrc",formEl.querySelectorAll('label')[0] );
+    for (const [key, val] in formData) {
+      console.log('dataaa: ', key, val);
+      debugger
+    }
+
+    console.log(formData)
+    
+  }
+  console.log("after func");
+
+  submitEl.addEventListener('click', submitForm);
+  
+  console.log("added listener");
   // Steps B4-B9 will occur inside the event listener from step B3
   // B4. TODO - Create a new FormData object from the <form> element reference above
   // B5. TODO - Create an empty object (I'll refer to this object as recipeObject to
